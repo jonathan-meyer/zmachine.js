@@ -1,23 +1,11 @@
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
-const webpack = require("webpack");
-const webpackDevMiddleware = require("webpack-dev-middleware");
-const webpackHotMiddleware = require("webpack-hot-middleware");
 
 const { CPU } = require("../zmachine");
 
 const port = process.env.PORT || 3000;
 const isProd = process.env.NODE_ENV === "production";
-
-function createWebpackMiddleware(compiler, publicPath) {
-  return webpackDevMiddleware(compiler, {
-    logLevel: "warn",
-    publicPath,
-    silent: true,
-    stats: "errors-only",
-  });
-}
 
 const app = express();
 const server = http.createServer(app);
@@ -27,6 +15,19 @@ app.use(express.static("dist"));
 
 if (isProd) {
 } else {
+  const webpack = require("webpack");
+  const webpackDevMiddleware = require("webpack-dev-middleware");
+  const webpackHotMiddleware = require("webpack-hot-middleware");
+
+  function createWebpackMiddleware(compiler, publicPath) {
+    return webpackDevMiddleware(compiler, {
+      logLevel: "warn",
+      publicPath,
+      silent: true,
+      stats: "errors-only",
+    });
+  }
+
   const webpackConfig = require("../../webpack.dev.config");
   const compiler = webpack(webpackConfig);
 
