@@ -1,0 +1,51 @@
+{
+  "name": "zengine",
+  "version": "0.1.0",
+  "description": "Fronend to the Zmachine",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stejsoftware/zengine.git"
+  },
+  "author": "Jonathan Meyer",
+  "license": "ISC",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "clean": "rimraf ./dist",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --color -p --progress --hide-modules --display-optimization-bailout",
+    "start": "cross-env NODE_ENV=production DEBUG=zmachine.* node src/server",
+    "start:dev": "cross-env NODE_ENV=development node src/server"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cross-env": "^7.0.2",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^4.4.1",
+    "css-loader": "^3.5.3",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "react": "^16.5.2",
+    "react-app-polyfill": "^1.0.6",
+    "react-bootstrap": "^1.0.1",
+    "react-console-emulator": "^3.0.5",
+    "react-dom": "^16.5.2",
+    "rimraf": "^3.0.2",
+    "socket.io-client": "^2.3.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "yargs": "^15.3.1"
+  }
+}
