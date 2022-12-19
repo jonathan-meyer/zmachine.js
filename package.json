@@ -19,7 +19,7 @@
     "start:dev": "cross-env NODE_ENV=development node src/server"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "cross-env": "^7.0.2",
     "debug": "^4.1.1",
     "express": "^4.17.1",
